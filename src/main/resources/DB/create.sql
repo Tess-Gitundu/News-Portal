@@ -23,5 +23,5 @@ CREATE TABLE IF NOT EXISTS employees (
  id int PRIMARY KEY auto_increment,
  newsTitle VARCHAR,
  content VARCHAR,
- departmentId INTEGER
+ employeeId INTEGER
  );
