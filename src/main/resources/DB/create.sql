@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS employees (
  id int PRIMARY KEY auto_increment,
  name VARCHAR,
  description VARCHAR,
- number of employees INTEGER
+ numberOfEmployees INTEGER
  );
 
  CREATE TABLE IF NOT EXISTS news (
