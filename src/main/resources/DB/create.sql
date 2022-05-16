@@ -25,3 +25,11 @@ CREATE TABLE IF NOT EXISTS employees (
  content VARCHAR,
  employeeId INTEGER
  );
+
+ CREATE TABLE IF NOT EXISTS departments_employees (
+  id int PRIMARY KEY auto_increment,
+  employeeId INTEGER,
+  departmentId INTEGER
+ );
+
+CREATE DATABASE news_portal_test WITH TEMPLATE news_portal
