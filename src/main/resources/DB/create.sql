@@ -3,16 +3,7 @@ SET MODE PostgreSQL;
 CREATE DATABASE news_portal;
 \c news_portal;
 
-CREATE TABLE IF NOT EXISTS employees (
- id int PRIMARY KEY auto_increment,
- employee VARCHAR,
- role VARCHAR,
- position VARCHAR,
- email VARCHAR,
- departmentId INTEGER
- );
-
- CREATE TABLE IF NOT EXISTS departments (
+CREATE TABLE IF NOT EXISTS departments (
  id int PRIMARY KEY auto_increment,
  name VARCHAR,
  description VARCHAR,
@@ -24,6 +15,15 @@ CREATE TABLE IF NOT EXISTS employees (
  newsTitle VARCHAR,
  content VARCHAR,
  employeeId INTEGER
+ );
+
+CREATE TABLE IF NOT EXISTS employees (
+ id int PRIMARY KEY auto_increment,
+ employee VARCHAR,
+ role VARCHAR,
+ position VARCHAR,
+ email VARCHAR,
+ departmentId INTEGER
  );
 
  CREATE TABLE IF NOT EXISTS departments_employees (
