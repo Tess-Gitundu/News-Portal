@@ -1,4 +1,3 @@
-
 import com.google.gson.Gson;
 import dao.Sql2oDepartmentDao;
 import dao.Sql2oEmployeeDao;
