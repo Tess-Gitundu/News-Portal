@@ -32,4 +32,4 @@ CREATE TABLE IF NOT EXISTS employees (
   departmentId INTEGER
  );
 
-CREATE DATABASE news_portal_test WITH TEMPLATE news_portal
+CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
