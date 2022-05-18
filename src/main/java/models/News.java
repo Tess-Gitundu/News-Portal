@@ -5,13 +5,13 @@ import java.util.Objects;
 public class News {
     private String title;
     private String content;
-    private int departmentId;
+    private int employeeId;
     private int id;
 
-    public News(String title, String content, int departmentId) {
+    public News(String title, String content, int employeeId) {
         this.title = title;
         this.content = content;
-        this.departmentId = departmentId;
+        this.employeeId = employeeId;
     }
 
     public String getTitle() {
@@ -30,12 +30,12 @@ public class News {
         this.content = content;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
     public int getId() {
@@ -51,11 +51,11 @@ public class News {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         News news = (News) o;
-        return departmentId == news.departmentId && id == news.id && Objects.equals(title, news.title) && Objects.equals(content, news.content);
+        return employeeId == news.employeeId && id == news.id && Objects.equals(title, news.title) && Objects.equals(content, news.content);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, content, departmentId, id);
+        return Objects.hash(title, content, employeeId, id);
     }
 }

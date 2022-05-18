@@ -17,7 +17,7 @@ public class Sql2oNewsDao implements NewsDao{
 
     @Override
     public void add(News news) {
-        String sql = "INSERT INTO news (newsTitle, content, employeeId) VALUES (:newsTitle, :content, :employeeId)";
+        String sql = "INSERT INTO news (title, content, employeeId) VALUES (:title, :content, :employeeId)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
                     .bind(news)
@@ -38,11 +38,11 @@ public class Sql2oNewsDao implements NewsDao{
     }
 
     @Override
-    public List<News> getAllNewsByDepartment(int departmentId) {
-        String sql = "SELECT * FROM news WHERE departmentId = :departmentId";
+    public List<News> getAllNewsByEmployee(int employeeId) {
+        String sql = "SELECT * FROM news WHERE employeeId = :employeeId";
         try(Connection con = sql2o.open()){
             return con.createQuery(sql)
-                    .addParameter("departmentId", departmentId)
+                    .addParameter("employeeId", employeeId)
                     .executeAndFetch(News.class);
         }
     }

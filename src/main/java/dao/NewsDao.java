@@ -10,7 +10,7 @@ public interface NewsDao {
 
     //read
     List<News> getAll();
-    List<News> getAllNewsByDepartment(int departmentId);
+    List<News> getAllNewsByEmployee(int employeeId);
 
     //update
     //omit for now

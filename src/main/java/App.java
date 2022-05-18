@@ -1,3 +1,4 @@
+
 import com.google.gson.Gson;
 import dao.Sql2oDepartmentDao;
 import dao.Sql2oEmployeeDao;
@@ -7,6 +8,8 @@ import models.Employee;
 import models.News;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+
 
 import java.util.List;
 
@@ -23,7 +26,7 @@ public class App {
         Gson gson = new Gson();
 
         //creating a new department
-        post("/department/new", "application/json" ,(request, response) -> {
+        post("/departments/new", "application/json" ,(request, response) -> {
             Department department = gson.fromJson(request.body(), Department.class);
             sql2oDepartmentDao.add(department);
             response.status(200);
@@ -49,10 +52,9 @@ public class App {
             return  gson.toJson(sql2oDepartmentDao.getAllEmployeesInADepartment(departmentId));
         });
 
-
         //create a new employee
-        post("/employee/new", "application/json", ((request, response) -> {
-            int departmentId = Integer.parseInt(request.queryParams("departmentId"));
+        post("/departments/:departmentId/employee/new", "application/json", (request, response) -> {
+            int departmentId = Integer.parseInt(request.params("departmentId"));
             Department newDepartment = sql2oDepartmentDao.findById(departmentId);
             Employee employee = gson.fromJson(request.body(), Employee.class);
             sql2oEmployeeDao.add(employee);
@@ -60,7 +62,8 @@ public class App {
             sql2oDepartmentDao.addEmployeeToDepartment(newDepartment, employee);
             response.status(200);
             return gson.toJson(employee);
-        }));
+        });
+
 
         //listing all the employees
         get("/employees", "application/json", (request, response) -> {
@@ -92,9 +95,9 @@ public class App {
         });
 
         //List news per Department
-        get ("/news/:departmentId", "application/json", (request, response) -> {
-            int departmentId = Integer.parseInt(request.params("departmentId"));
-            return gson.toJson(sql2oNewsDao.getAllNewsByDepartment(departmentId));
+        get ("/news/:employeeId", "application/json", (request, response) -> {
+            int employeeId = Integer.parseInt(request.params("employeeId"));
+            return gson.toJson(sql2oNewsDao.getAllNewsByEmployee(employeeId));
         });
     }
 }
